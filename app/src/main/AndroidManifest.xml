@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddRestaurantActivity"
+            android:label="@string/title_activity_add_restaurant" />
+        <activity
+            android:name=".RestaurantViewActivity"
+            android:label="@string/title_activity_restaurant_view" />
+        <activity
+            android:name=".UpdateRestaurantActivity"
+            android:label="@string/title_activity_update_restaurant"></activity>
     </application>
 
 </manifest>

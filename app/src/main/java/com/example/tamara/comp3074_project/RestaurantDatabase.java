@@ -1,3 +1,4 @@
+package com.example.tamara.comp3074_project;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
@@ -17,14 +18,14 @@ public abstract class RestaurantDatabase extends RoomDatabase {
             synchronized (RestaurantDatabase.class){
                 if(instance == null){
                     instance = Room.databaseBuilder(context.getApplicationContext(),
-                            RestaurantDatabase.class, "restaurant_database").addCallback(callback).fallbackToDestructiveMigration().build();
-
+                            RestaurantDatabase.class, "restaurant_database")
+                            .addCallback(callback)
+                            .fallbackToDestructiveMigration().build();
                 }
             }
         }
         return instance;
     }
-
 
     private static Callback callback = new Callback(){
         @Override
@@ -33,6 +34,7 @@ public abstract class RestaurantDatabase extends RoomDatabase {
             new populateAsyncTask(instance.restaurantDao()).execute();
         }
     };
+
     private static class populateAsyncTask extends AsyncTask<Void, Void,Void>{
         private final RestaurantDao dao;
         populateAsyncTask(RestaurantDao dao){
@@ -41,9 +43,6 @@ public abstract class RestaurantDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            dao.insert(new Restaurant("name", "aff", "email", "shortbio","shortbio,tag,tag"));
-            dao.insert(new Restaurant("name", "aff", "email", "shortbio","shortbio,tag,tag"));
-            dao.insert(new Restaurant("name", "aff", "email", "shortbio","shortbio,tag,tag"));
             dao.insert(new Restaurant("name", "aff", "email", "shortbio","shortbio,tag,tag"));
             return null;
         }
