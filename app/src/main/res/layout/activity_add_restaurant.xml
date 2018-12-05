@@ -25,15 +25,16 @@
         android:layout_marginLeft="7dp"
         android:layout_marginRight="11dp"
         android:layout_marginStart="7dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="88dp"
         android:ems="10"
         android:hint="name "
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <EditText
+    <!-- <EditText
         android:id="@+id/editTextAddress"
         android:layout_width="366dp"
         android:layout_height="48dp"
@@ -47,7 +48,20 @@
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" /> -->
+    <fragment
+        android:id="@+id/editTextAddress"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.698" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -74,11 +88,12 @@
         android:layout_marginLeft="7dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="7dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="112dp"
         android:ems="10"
         android:hint="description "
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
@@ -90,7 +105,7 @@
         android:layout_marginLeft="7dp"
         android:layout_marginRight="10dp"
         android:layout_marginStart="7dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="132dp"
         android:ems="10"
         android:hint="tags"
         android:inputType="textPersonName"
