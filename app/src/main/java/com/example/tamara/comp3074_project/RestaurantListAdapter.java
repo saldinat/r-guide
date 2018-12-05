@@ -87,6 +87,20 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
         });
 
+        restaurantViewHolder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent i = new Intent(v.getContext(), RestaurantViewActivity.class);
+                i.putExtra("name", pItem.getRestaurant());
+                i.putExtra("address", pItem.getAddress());
+                i.putExtra("phone", pItem.getPhone());
+                i.putExtra("description", pItem.getDescription());
+                i.putExtra("tags", pItem.getTags());
+                mContext.startActivity(i);
+                return true;
+            }
+        });
+
     }
 
     @Override
