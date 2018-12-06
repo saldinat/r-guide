@@ -37,11 +37,16 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCd0ICX8mhHa9F-lzo_lwh70DneQTVpBT4" />
+            android:value="AIzaSyBj1JtBRGjIrmc0Ak1Y38g72RC7_jOksF8" />
 
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

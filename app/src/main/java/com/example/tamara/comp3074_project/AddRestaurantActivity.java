@@ -43,7 +43,12 @@ public class AddRestaurantActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
 
+        /*
         final PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+                */
+
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
         /*
@@ -64,7 +69,7 @@ public class AddRestaurantActivity extends Activity {
         */
 
         final EditText name = findViewById(R.id.editTextName);
-        // final EditText address = findViewById(R.id.editTextAddress);
+        final EditText address = findViewById(R.id.editTextAddress);
         final EditText phone = findViewById(R.id.editTextPhone);
         final EditText description = findViewById(R.id.editTextDescription);
         final EditText tags = findViewById(R.id.editTextTags);
@@ -103,8 +108,8 @@ public class AddRestaurantActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent();
                 i.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
-                // i.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
-                i.putExtra(EXTRA_REPLY_ADDRESS, autoCompleteAddress);
+                i.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
+                // i.putExtra(EXTRA_REPLY_ADDRESS, autoCompleteAddress);
                 i.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
                 i.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
                 i.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
@@ -113,12 +118,29 @@ public class AddRestaurantActivity extends Activity {
             }
         });
 
+        /*
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 autoCompleteAddress = place.getAddress().toString();
                 Log.i(TAG, "Place: " + place.getName());
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+        */
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                // autoCompleteAddress = place.getAddress().toString();
+                Log.i(TAG, "Place: " + place.getName());//get place details here
             }
 
             @Override
