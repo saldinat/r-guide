@@ -20,6 +20,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
@@ -84,10 +86,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng gbcCasaLoma = new LatLng(43.6757061, -79.4129735);
-        mMap.addMarker(new MarkerOptions().position(gbcCasaLoma).title("Marker in Sydney"));
+        LatLng gbcCasaLoma = new LatLng(43.6761, -79.4105);
+        mMap.addMarker(new MarkerOptions().position(gbcCasaLoma).title("Current Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gbcCasaLoma));
-        polyline = mMap.addPolyline(new PolylineOptions().add());
+        polyline = mMap.addPolyline(new PolylineOptions().add(gbcCasaLoma));
 
     }
 
@@ -96,11 +98,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if (mMap != null) {
             LatLng pos = new LatLng(location.getLatitude(), location.getLongitude());
-            MarkerOptions mark = new MarkerOptions().position(pos).title("Current Location");
+            MarkerOptions mark = new MarkerOptions().position(pos).title("Destination");
             mark.snippet("You Are Here.");
             mMap.addMarker(mark);
             mMap.animateCamera(CameraUpdateFactory.newLatLng(pos));
-            // mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            List list = polyline.getPoints();
+            list.add(pos);
+            polyline.setPoints(list);
         }
 
     }

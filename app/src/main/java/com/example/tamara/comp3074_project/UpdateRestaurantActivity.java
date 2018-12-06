@@ -1,10 +1,15 @@
 package com.example.tamara.comp3074_project;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -18,6 +23,8 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 
+import java.util.List;
+
 import static android.content.ContentValues.TAG;
 
 
@@ -30,6 +37,8 @@ public class UpdateRestaurantActivity extends Activity {
     public static final String EXTRA_REPLY_DELETE = "delete";
     public static final String EXTRA_REPLY_UPDATE = "update";
     private RestaurantViewModel presenterViewModel;
+    private LocationManager locationManager;
+    private static final int LOCATION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +69,13 @@ public class UpdateRestaurantActivity extends Activity {
         Button bSave = findViewById(R.id.btnSaveRestaurant);
         Button bLocation = findViewById(R.id.btnLocationRestaurant);
         Button bDirection = findViewById(R.id.btnDirectionRestaurant);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_CODE);
+        }
+
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,25 +143,30 @@ public class UpdateRestaurantActivity extends Activity {
         bDirection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String destination = address.getText().toString();
+                if (destination.equals("")) {
+                    destination = "160+Kendal+Ave+Toronto+Ontario+Canada";
+                    Toast.makeText(getApplicationContext(), "No Address Was Supplied.", Toast.LENGTH_LONG).show();
+                }
+
+                String lastKnownLocation;
+
+                List<String> providers = locationManager.getProviders(true);
+
+                if (providers.get(0).equals("") || providers.get(0).equals(null)) {
+                    lastKnownLocation = "160+Kendal+Ave+Toronto+Ontario+Canada";
+                } else {
+                    lastKnownLocation = providers.get(0);
+                }
+
+                Uri navQuery = Uri.parse("https://www.google.com/maps/dir/?api=1&origin=" + lastKnownLocation + "&destination=" + destination);
+
+                Intent i = new Intent(Intent.ACTION_VIEW, navQuery);
+                startActivity(i);
 
             }
         });
 
-        /*
-        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-            @Override
-            public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
-                Log.i(TAG, "Place: " + place.getName());
-            }
-
-            @Override
-            public void onError(Status status) {
-                // TODO: Handle the error.
-                Log.i(TAG, "An error occurred: " + status);
-            }
-        });
-        */
 
     }
 
