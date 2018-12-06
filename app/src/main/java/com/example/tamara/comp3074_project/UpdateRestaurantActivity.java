@@ -7,10 +7,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+
+import static android.content.ContentValues.TAG;
 
 
 public class UpdateRestaurantActivity extends Activity {
@@ -30,6 +38,11 @@ public class UpdateRestaurantActivity extends Activity {
         setContentView(R.layout.activity_update_restaurant);
         Bundle extras = getIntent().getExtras();
         Intent i = getIntent();
+
+        /*
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+                */
 
         final EditText name = findViewById(R.id.editTextName);
         final EditText address = findViewById(R.id.editTextAddress);
@@ -88,7 +101,7 @@ public class UpdateRestaurantActivity extends Activity {
                 i_start.putExtra(EXTRA_REPLY_UPDATE, "do-update");
                 //i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
                 i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
-                i_start.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
+                //i_start.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
                 i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
                 i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
                 i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
@@ -114,9 +127,26 @@ public class UpdateRestaurantActivity extends Activity {
         bDirection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
+
+        /*
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i(TAG, "Place: " + place.getName());
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+        */
+
     }
 
 }
