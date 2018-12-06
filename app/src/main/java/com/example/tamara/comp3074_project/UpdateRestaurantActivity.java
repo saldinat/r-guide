@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class UpdateRestaurantActivity extends Activity {
@@ -23,6 +25,7 @@ public class UpdateRestaurantActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_restaurant);
         Bundle extras = getIntent().getExtras();
@@ -42,6 +45,8 @@ public class UpdateRestaurantActivity extends Activity {
 
         Button b = findViewById(R.id.btnDeleteRestaurant);
         Button bSave = findViewById(R.id.btnSaveRestaurant);
+        Button bLocation = findViewById(R.id.btnLocationRestaurant);
+        Button bDirection = findViewById(R.id.btnDirectionRestaurant);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +94,27 @@ public class UpdateRestaurantActivity extends Activity {
                 i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
                 setResult(RESULT_OK, i_start);
                 finish();
+            }
+        });
+
+        bLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String destination = address.getText().toString();
+                if (destination.equals("")) {
+                    destination = "160+Kendal+Ave+Toronto+Ontario+Canada";
+                    Toast.makeText(getApplicationContext(), "No Address Was Supplied.", Toast.LENGTH_LONG).show();
+                }
+
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + destination));
+                startActivity(i);
+            }
+        });
+
+        bDirection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
             }
         });
     }
