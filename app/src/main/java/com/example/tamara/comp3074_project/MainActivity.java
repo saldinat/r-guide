@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import ccom.example.tamara.comp3074_project.AboutActivity;
+
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_DELETE = "RESULT";
 
@@ -29,12 +31,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button b = findViewById(R.id.btnAddNewRestaurant);
+        Button bAbout = findViewById(R.id.btnAboutGroup);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, AddRestaurantActivity.class);
                 startActivityForResult(i, NEW_WORD);
 
+            }
+        });
+
+        bAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(i);
             }
         });
 
