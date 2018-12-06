@@ -9,6 +9,7 @@ public class RestaurantViewActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_view);
         Bundle extras = getIntent().getExtras();
