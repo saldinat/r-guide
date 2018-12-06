@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceDetectionClient;
@@ -45,11 +46,22 @@ public class AddRestaurantActivity extends Activity {
         final PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
+        /*
+         * The following code example shows setting an AutocompleteFilter on a PlaceAutocompleteFragment to
+         * set a filter returning only results with a precise address.
+         */
+        AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
+                .build();
+        autocompleteFragment.setFilter(typeFilter);
+
+        /*
         // Construct a GeoDataClient.
         mGeoDataClient = Places.getGeoDataClient(this, null);
 
         // Construct a PlaceDetectionClient.
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
+        */
 
         final EditText name = findViewById(R.id.editTextName);
         // final EditText address = findViewById(R.id.editTextAddress);
@@ -59,6 +71,7 @@ public class AddRestaurantActivity extends Activity {
 
         // String autoCompleteAddress;
 
+        /*
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -82,6 +95,7 @@ public class AddRestaurantActivity extends Activity {
                 likelyPlaces.release();
             }
         });
+        */
 
         Button b = findViewById(R.id.btnSaveRestaurant);
         b.setOnClickListener(new View.OnClickListener() {

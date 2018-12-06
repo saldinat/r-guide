@@ -3,4 +3,6 @@
     <string name="title_activity_add_restaurant">AddRestaurantActivity</string>
     <string name="title_activity_restaurant_view">RestaurantViewActivity</string>
     <string name="title_activity_update_restaurant">UpdateRestaurantActivity</string>
+    <string name="title_activity_maps">Map</string>
+    <!-- <string name="google_maps_key">AIzaSyCd0ICX8mhHa9F-lzo_lwh70DneQTVpBT4</string> -->
 </resources>

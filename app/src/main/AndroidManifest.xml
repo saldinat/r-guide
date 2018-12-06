@@ -3,6 +3,7 @@
     package="com.example.tamara.comp3074_project">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +26,22 @@
             android:label="@string/title_activity_restaurant_view" />
         <activity
             android:name=".UpdateRestaurantActivity"
-            android:label="@string/title_activity_update_restaurant"></activity>
+            android:label="@string/title_activity_update_restaurant" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCd0ICX8mhHa9F-lzo_lwh70DneQTVpBT4" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>
