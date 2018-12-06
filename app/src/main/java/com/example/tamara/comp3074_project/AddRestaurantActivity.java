@@ -106,15 +106,31 @@ public class AddRestaurantActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
-                i.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
-                i.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
-                // i.putExtra(EXTRA_REPLY_ADDRESS, autoCompleteAddress);
-                i.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
-                i.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
-                i.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
-                setResult(RESULT_OK, i);
-                finish();
+                // autoCompleteAddress = place.getAddress().toString();
+
+                if (autoCompleteAddress.equals("")) {
+                    Intent i = new Intent();
+                    i.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
+                    i.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
+                    // i.putExtra(EXTRA_REPLY_ADDRESS, autoCompleteAddress);
+                    i.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
+                    i.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
+                    i.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    setResult(RESULT_OK, i);
+                    finish();
+
+                } else {
+                    Intent i = new Intent();
+                    i.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
+                    // i.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
+                    i.putExtra(EXTRA_REPLY_ADDRESS, autoCompleteAddress);
+                    i.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
+                    i.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
+                    i.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    setResult(RESULT_OK, i);
+                    finish();
+
+                }
             }
         });
 
@@ -139,8 +155,8 @@ public class AddRestaurantActivity extends Activity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                // autoCompleteAddress = place.getAddress().toString();
-                Log.i(TAG, "Place: " + place.getName());//get place details here
+                autoCompleteAddress = place.getAddress().toString();
+                Log.i(TAG, "Place: " + place.getName()); //get place details here
             }
 
             @Override
