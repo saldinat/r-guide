@@ -2,11 +2,8 @@ package com.example.tamara.comp3074_project;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -19,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
@@ -39,6 +37,7 @@ public class UpdateRestaurantActivity extends Activity {
     private RestaurantViewModel presenterViewModel;
     private LocationManager locationManager;
     private static final int LOCATION_CODE = 1;
+    public static String autoCompleteAddress = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +47,17 @@ public class UpdateRestaurantActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         Intent i = getIntent();
 
-        /*
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-                */
+
+        /*
+         * The following code example shows setting an AutocompleteFilter on a PlaceAutocompleteFragment to
+         * set a filter returning only results with a precise address.
+         */
+        AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
+                .build();
+        autocompleteFragment.setFilter(typeFilter);
 
         final EditText name = findViewById(R.id.editTextName);
         final EditText address = findViewById(R.id.editTextAddress);
@@ -111,18 +117,50 @@ public class UpdateRestaurantActivity extends Activity {
         bSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i_start = new Intent(UpdateRestaurantActivity.this, MainActivity.class);
-                //Intent intent_2 = new Intent();
-                //startActivityForResult(i_start, 2);
-                i_start.putExtra(EXTRA_REPLY_UPDATE, "do-update");
-                //i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
-                i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
-                //i_start.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
-                i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
-                i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
-                i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
-                setResult(RESULT_OK, i_start);
-                finish();
+
+                if (autoCompleteAddress.equals("")) {
+
+                    /* Original code block found here:
+                    Intent i_start = new Intent(UpdateRestaurantActivity.this, MainActivity.class);
+                    //Intent intent_2 = new Intent();
+                    //startActivityForResult(i_start, 2);
+                    i_start.putExtra(EXTRA_REPLY_UPDATE, "do-update");
+                    //i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
+                    //i_start.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+
+                    setResult(RESULT_OK, i_start);
+                    finish();
+                    */ // End of Original code block:
+
+                    Intent i_start = new Intent(UpdateRestaurantActivity.this, MainActivity.class);
+                    i_start.putExtra(EXTRA_REPLY_UPDATE, "do-update");
+                    i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
+                    // i_start.putExtra(EXTRA_REPLY_ADDRESS, autoCompleteAddress);
+                    i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    setResult(RESULT_OK, i_start);
+                    finish();
+
+                } else {
+
+                    Intent i_start = new Intent(UpdateRestaurantActivity.this, MainActivity.class);
+                    i_start.putExtra(EXTRA_REPLY_UPDATE, "do-update");
+                    i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
+                    // i_start.putExtra(EXTRA_REPLY_ADDRESS, address.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_ADDRESS, autoCompleteAddress);
+                    i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    setResult(RESULT_OK, i_start);
+                    finish();
+
+                }
             }
         });
 
@@ -164,6 +202,21 @@ public class UpdateRestaurantActivity extends Activity {
                 Intent i = new Intent(Intent.ACTION_VIEW, navQuery);
                 startActivity(i);
 
+            }
+        });
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                autoCompleteAddress = place.getAddress().toString();
+                Log.i(TAG, "Place: " + place.getName()); //get place details here
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i(TAG, "An error occurred: " + status);
             }
         });
 
