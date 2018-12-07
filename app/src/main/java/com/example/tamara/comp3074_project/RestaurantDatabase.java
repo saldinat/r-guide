@@ -43,7 +43,8 @@ public abstract class RestaurantDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            dao.insert(new Restaurant("name", "aff", "email", "shortbio","shortbio,tag,tag", "5"));
+            dao.insert(new Restaurant("Restaurant Test", "160 Kendal Ave", "416-222-34-34",
+                    "Family style","family, hearty", "5"));
             return null;
         }
     }

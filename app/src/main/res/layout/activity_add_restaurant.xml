@@ -132,7 +132,7 @@
         android:layout_marginRight="96dp"
         android:layout_marginStart="96dp"
         android:layout_marginTop="8dp"
-        android:numStars="4"
+        android:numStars="5"
         android:rating="2.0"
         android:stepSize="1.0"
         app:layout_constraintEnd_toEndOf="parent"

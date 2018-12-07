@@ -39,9 +39,9 @@ public class RestaurantViewActivity extends Activity {
             tvPhone.setText(i.getStringExtra("phone"));
             tvDescription.setText(i.getStringExtra("description"));
             tvTags.setText(i.getStringExtra("tags"));
-<<<<<<< HEAD
+//HEAD
             //tvRating.setText(i.getStringExtra("rating"));
-=======
+//=======
 
 
             rName = tvName.getText().toString();
@@ -51,7 +51,7 @@ public class RestaurantViewActivity extends Activity {
             rTags = tvTags.getText().toString();
 
             tvRating.setText(i.getStringExtra("rating"));
->>>>>>> 1e002570d36f02ed485ff209f77cb505d0a8ca97
+//>>>>>>> 1e002570d36f02ed485ff209f77cb505d0a8ca97
             ratingBar.setRating(Float.parseFloat(i.getStringExtra("rating")));
 
         }

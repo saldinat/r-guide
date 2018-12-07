@@ -6,144 +6,171 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantViewActivity">
 
-    <Button
-        android:id="@+id/btnShareTwitter"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Share via Twitter"
-        app:layout_constraintBottom_toTopOf="@+id/btnShareEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnShareFacebook"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Share via Facebook"
-        app:layout_constraintBottom_toTopOf="@+id/btnShareTwitter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnShareEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Share via Email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="51dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="51dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="3dp"
         android:text="Restaurant Details"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#340c84"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="3dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="333dp"
-        android:layout_height="510dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="238dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="238dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <TextView
+        android:id="@+id/textViewPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="238dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="238dp"
+        android:layout_marginStart="88dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTags"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
+
+    <TextView
+        android:id="@+id/textViewTags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="238dp"
+        android:layout_marginStart="88dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRatingValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+    <TextView
+        android:id="@+id/textViewRatingValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="238dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="3dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTags" />
+
+    <RatingBar
+        android:id="@+id/ratingBarView"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginRight="96dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="77dp"
+        android:layout_weight="1"
+        android:numStars="5"
+        android:rating="2.0"
+        android:stepSize="1.0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textViewRatingValue" />
 
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share via:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="586dp" />
 
-        <TextView
-            android:id="@+id/textViewAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+    <Button
+        android:id="@+id/btnShareTwitter"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:text="Twitter"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="440dp" />
 
-        <TextView
-            android:id="@+id/textViewPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+    <Button
+        android:id="@+id/btnShareFacebook"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:text="Facebook"
+        tools:layout_editor_absoluteY="613dp" />
 
-        <TextView
-            android:id="@+id/textViewDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <TextView
-            android:id="@+id/textViewTags"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-=======
-            android:text="TextView" />
->>>>>>> 1e002570d36f02ed485ff209f77cb505d0a8ca97
-
-        <TextView
-            android:id="@+id/textViewRatingValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <RatingBar
-                android:id="@+id/ratingBarView"
-                android:layout_width="177dp"
-                android:layout_height="38dp"
-                android:layout_marginEnd="96dp"
-                android:layout_marginLeft="96dp"
-                android:layout_marginRight="96dp"
-                android:layout_marginStart="96dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:numStars="4"
-                android:rating="2.0"
-                android:stepSize="1.0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTags" />
-        </LinearLayout>
+    <Button
+        android:id="@+id/btnShareEmail"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        tools:layout_editor_absoluteX="272dp"
+        tools:layout_editor_absoluteY="613dp" />
 
 
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
