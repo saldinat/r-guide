@@ -29,6 +29,7 @@ public interface RestaurantDao {
     @Query("SELECT * FROM restaurant_table WHERE restaurant= :restaurant")
     Restaurant getRestaurant(String restaurant);
 
-    @Query("UPDATE restaurant_table SET address =:address, phone =:phone, description =:description, tags =:tags WHERE restaurant= :restaurant")
+    @Query("UPDATE restaurant_table SET address =:address, phone =:phone, description =:description," +
+            " tags =:tags, tags =:tags WHERE restaurant= :restaurant")
     void updateRestaurantWithName(String restaurant, String address, String phone, String description, String tags);
 }

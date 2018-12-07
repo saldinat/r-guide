@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+
 import android.view.View;
 import android.widget.Button;
+
+import android.widget.RatingBar;
+
 import android.widget.TextView;
 
 public class RestaurantViewActivity extends Activity {
@@ -26,6 +30,8 @@ public class RestaurantViewActivity extends Activity {
             TextView tvPhone = (TextView) findViewById(R.id.textViewPhone);
             TextView tvDescription = (TextView) findViewById(R.id.textViewDescription);
             TextView tvTags = (TextView) findViewById(R.id.textViewTags);
+            TextView tvRating = (TextView) findViewById(R.id.textViewRatingValue);
+            RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBarView);
 
             tvName.setText(i.getStringExtra("name"));
             tvAddress.setText(i.getStringExtra("address"));
@@ -33,11 +39,16 @@ public class RestaurantViewActivity extends Activity {
             tvDescription.setText(i.getStringExtra("description"));
             tvTags.setText(i.getStringExtra("tags"));
 
+
             rName = tvName.getText().toString();
             rAddress = tvAddress.getText().toString();
             rPhone = tvPhone.getText().toString();
             rDescription = tvDescription.getText().toString();
             rTags = tvTags.getText().toString();
+
+            tvRating.setText(i.getStringExtra("rating"));
+            ratingBar.setRating(Float.parseFloat(i.getStringExtra("rating")));
+
         }
 
         Button btnShareEmail = findViewById(R.id.btnShareEmail);

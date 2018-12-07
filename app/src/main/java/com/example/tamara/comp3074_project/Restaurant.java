@@ -3,6 +3,7 @@ package com.example.tamara.comp3074_project;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "restaurant_table")
@@ -42,16 +43,29 @@ public class Restaurant {
     private String phone;
     private String description;
     private String tags;
+    private String rating;
 
     public Restaurant(String restaurant, String address, String phone, String description,
-                      String tags) {
+                      String tags, String rating) {
         this.restaurant = restaurant;
         this.address = address;
         this.phone = phone;
         this.description = description;
         this.tags = tags;
+        this.rating = rating;
     }
 
+    public String getRating() {
+        return rating;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
     public void setRestaurant(@NonNull String restaurant) {
         this.restaurant = restaurant;
     }
