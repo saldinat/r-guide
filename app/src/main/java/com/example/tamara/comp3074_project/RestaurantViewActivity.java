@@ -69,6 +69,30 @@ public class RestaurantViewActivity extends Activity {
             }
         });
 
+        Button btnShareTwitter = findViewById(R.id.btnShareTwitter);
+
+        btnShareTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String tweetMsg = "I just ate at a great place! Check out " + rName + " at " + rAddress + ".";
+
+                Intent tweet = new Intent(Intent.ACTION_VIEW);
+                tweet.setData(Uri.parse("http://twitter.com/?status=" + Uri.encode(tweetMsg)));
+                startActivity(tweet);
+
+            }
+        });
+
+        Button btnShareFacebook = findViewById(R.id.btnShareFacebook);
+
+        btnShareFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
 }
