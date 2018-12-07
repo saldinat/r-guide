@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                     data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_ADDRESS),
                     data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_PHONE),
                     data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_DESCRIPTION),
-                    data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_TAGS)
+                    data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_TAGS),
+                    data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_RATING)
                     ));
         }
 
@@ -82,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
                     data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_ADDRESS),
                     data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_PHONE),
                     data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_DESCRIPTION),
-                    data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_TAGS)
-            ));
+                    data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_TAGS),
+                            data.getStringExtra(AddRestaurantActivity.EXTRA_REPLY_RATING)
+
+                    ));
             //Toast.makeText(this, "Restaurant has been deleted!",
                     //Toast.LENGTH_LONG).show();
             Log.d("LOG-UPD", "here!!!");

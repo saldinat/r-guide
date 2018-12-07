@@ -80,6 +80,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                 i.putExtra("phone", pItem.getPhone());
                 i.putExtra("description", pItem.getDescription());
                 i.putExtra("tags", pItem.getTags());
+                i.putExtra("rating", pItem.getRating());
                 //v.getContext().startActivity(i);
                 ((Activity) v.getContext()).startActivityForResult(i, DELETE_RES);
                 //Toast.makeText(v.getContext(), "You clicked " + pItem.getRestaurant(), Toast.LENGTH_LONG).show();
@@ -96,6 +97,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                 i.putExtra("phone", pItem.getPhone());
                 i.putExtra("description", pItem.getDescription());
                 i.putExtra("tags", pItem.getTags());
+                i.putExtra("rating", pItem.getRating());
                 mContext.startActivity(i);
                 return true;
             }

@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Restaurant.class}, version = 4)
+@Database(entities = {Restaurant.class}, version = 6)
 public abstract class RestaurantDatabase extends RoomDatabase {
 
     public abstract RestaurantDao restaurantDao();
@@ -43,7 +43,7 @@ public abstract class RestaurantDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            dao.insert(new Restaurant("name", "aff", "email", "shortbio","shortbio,tag,tag"));
+            dao.insert(new Restaurant("name", "aff", "email", "shortbio","shortbio,tag,tag", "5"));
             return null;
         }
     }

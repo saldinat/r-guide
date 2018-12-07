@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
@@ -32,6 +34,8 @@ public class UpdateRestaurantActivity extends Activity {
     public static final String EXTRA_REPLY_PHONE = "new_phone";
     public static final String EXTRA_REPLY_DESCRIPTION = "new_description";
     public static final String EXTRA_REPLY_TAGS = "new_tags";
+    public static final String EXTRA_REPLY_RATING = "new_rating";
+
     public static final String EXTRA_REPLY_DELETE = "delete";
     public static final String EXTRA_REPLY_UPDATE = "update";
     private RestaurantViewModel presenterViewModel;
@@ -58,18 +62,32 @@ public class UpdateRestaurantActivity extends Activity {
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
                 .build();
         autocompleteFragment.setFilter(typeFilter);
-
         final EditText name = findViewById(R.id.editTextName);
         final EditText address = findViewById(R.id.editTextAddress);
         final EditText phone = findViewById(R.id.editTextPhone);
         final EditText description = findViewById(R.id.editTextDescription);
         final EditText tags = findViewById(R.id.editTextTags);
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        final TextView txtRatingValue = (TextView) findViewById(R.id.txtRatingValue);
+
+        //if rating value is changed,
+        //display the current rating value in the result (textview) automatically
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+
+                txtRatingValue.setText(String.valueOf(rating));
+
+            }
+        });
 
         name.setText(i.getStringExtra("name"));
         address.setText(i.getStringExtra("address"));
         phone.setText(i.getStringExtra("phone"));
         description.setText(i.getStringExtra("description"));
         tags.setText(i.getStringExtra("tags"));
+        ratingBar.setRating(Float.parseFloat(i.getStringExtra("rating")));
+
 
         Button b = findViewById(R.id.btnDeleteRestaurant);
         Button bSave = findViewById(R.id.btnSaveRestaurant);
@@ -144,6 +162,8 @@ public class UpdateRestaurantActivity extends Activity {
                     i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
                     i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
                     i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_RATING, tags.getText().toString());
+
                     setResult(RESULT_OK, i_start);
                     finish();
 
@@ -157,6 +177,8 @@ public class UpdateRestaurantActivity extends Activity {
                     i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
                     i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
                     i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_RATING, txtRatingValue.getText().toString());
+
                     setResult(RESULT_OK, i_start);
                     finish();
 

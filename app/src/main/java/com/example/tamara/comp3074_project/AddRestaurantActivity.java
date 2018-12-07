@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
@@ -24,13 +26,17 @@ public class AddRestaurantActivity extends Activity {
     public static final String EXTRA_REPLY_PHONE = "new_phone";
     public static final String EXTRA_REPLY_DESCRIPTION = "new_description";
     public static final String EXTRA_REPLY_TAGS = "new_tags";
-    public static String autoCompleteAddress = "";
+    public static final String EXTRA_REPLY_RATING = "new_rating";
 
+    public static String autoCompleteAddress = "";
+    private RatingBar ratingBar;
+    private TextView txtRatingValue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
+
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
@@ -66,6 +72,7 @@ public class AddRestaurantActivity extends Activity {
                     i.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
                     i.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
                     i.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    i.putExtra(EXTRA_REPLY_RATING, txtRatingValue.getText().toString());
                     setResult(RESULT_OK, i);
                     finish();
 
@@ -77,6 +84,7 @@ public class AddRestaurantActivity extends Activity {
                     i.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
                     i.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
                     i.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
+                    i.putExtra(EXTRA_REPLY_RATING, txtRatingValue.getText().toString());
                     setResult(RESULT_OK, i);
                     finish();
 
@@ -96,6 +104,20 @@ public class AddRestaurantActivity extends Activity {
             public void onError(Status status) {
                 // TODO: Handle the error.
                 Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        txtRatingValue = (TextView) findViewById(R.id.txtRatingValue);
+
+        //if rating value is changed,
+        //display the current rating value in the result (textview) automatically
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+
+                txtRatingValue.setText(String.valueOf(rating));
+
             }
         });
 
