@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.RatingBar;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RestaurantViewActivity extends Activity {
 
@@ -89,7 +90,7 @@ public class RestaurantViewActivity extends Activity {
         btnShareFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(getApplicationContext(), "Future Integration.", Toast.LENGTH_LONG).show();
             }
         });
 
