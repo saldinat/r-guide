@@ -9,6 +9,8 @@ import java.util.List;
 public class RestaurantViewModel extends AndroidViewModel {
     private RestaurantRepository restaurantRepository;
     private LiveData<List<Restaurant>> allRestaurants;
+    private List<Restaurant> restaurants;
+
     public  RestaurantViewModel(Application application){
         super(application);
         restaurantRepository = new RestaurantRepository(application);
@@ -18,6 +20,7 @@ public class RestaurantViewModel extends AndroidViewModel {
     public LiveData<List<Restaurant>> getAllRestaurants() {
         return allRestaurants;
     }
+
 
     public void insert(Restaurant restaurant){
         restaurantRepository.insert(restaurant);

@@ -7,16 +7,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.tamara.comp3074_project.MainActivity;
 import com.example.tamara.comp3074_project.R;
 import com.example.tamara.comp3074_project.Restaurant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -24,9 +29,18 @@ import static android.support.v4.app.ActivityCompat.startActivityForResult;
 import static com.example.tamara.comp3074_project.MainActivity.NEW_WORD;
 import static java.lang.System.in;
 
-public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder>{
+public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder>
+       {
     private Context mContext;
-    private List<Restaurant> restaurants;
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+   public Context getmContext() {
+       return mContext;
+   }
+   private List<Restaurant> restaurants;
 
 
     public RestaurantListAdapter(Context context, List<Restaurant> restaurants){
@@ -81,9 +95,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                 i.putExtra("description", pItem.getDescription());
                 i.putExtra("tags", pItem.getTags());
                 i.putExtra("rating", pItem.getRating());
-                //v.getContext().startActivity(i);
                 ((Activity) v.getContext()).startActivityForResult(i, DELETE_RES);
-                //Toast.makeText(v.getContext(), "You clicked " + pItem.getRestaurant(), Toast.LENGTH_LONG).show();
             }
 
         });
@@ -116,7 +128,14 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         this.restaurants = restaurants;
         notifyDataSetChanged();
 
-    } }
+    }
+
+    public void updateList(List<Restaurant> newList){
+       restaurants = new ArrayList<>();
+       restaurants.addAll(newList);
+      notifyDataSetChanged();
+    }
+}
 
 
 

@@ -55,7 +55,7 @@ public class AddRestaurantActivity extends Activity {
         final EditText phone = findViewById(R.id.editTextPhone);
         final EditText description = findViewById(R.id.editTextDescription);
         final EditText tags = findViewById(R.id.editTextTags);
-
+        final String rating;
         // String autoCompleteAddress;
 
         Button b = findViewById(R.id.btnSaveRestaurant);
@@ -87,7 +87,7 @@ public class AddRestaurantActivity extends Activity {
                     i.putExtra(EXTRA_REPLY_RATING, txtRatingValue.getText().toString());
                     setResult(RESULT_OK, i);
                     finish();
-
+//
                 }
             }
         });
@@ -115,7 +115,7 @@ public class AddRestaurantActivity extends Activity {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating,
                                         boolean fromUser) {
-
+                //rating = String.valueOf(rating);
                 txtRatingValue.setText(String.valueOf(rating));
 
             }

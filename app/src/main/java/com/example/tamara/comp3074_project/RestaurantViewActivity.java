@@ -30,7 +30,7 @@ public class RestaurantViewActivity extends Activity {
             tvPhone.setText(i.getStringExtra("phone"));
             tvDescription.setText(i.getStringExtra("description"));
             tvTags.setText(i.getStringExtra("tags"));
-            tvRating.setText(i.getStringExtra("rating"));
+            //tvRating.setText(i.getStringExtra("rating"));
             ratingBar.setRating(Float.parseFloat(i.getStringExtra("rating")));
         }
     }

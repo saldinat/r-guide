@@ -46,21 +46,6 @@ public class RestaurantRepository {
         }
     }
 
-    private static class deleteRestaurantAsyncTask extends AsyncTask<Restaurant, Void, Void>{
-        private RestaurantDao mAsyncTaskDao;
-
-        public deleteRestaurantAsyncTask(RestaurantDao restaurantDao) {
-            mAsyncTaskDao = restaurantDao;
-
-        }
-        @Override
-
-        protected Void doInBackground(final Restaurant... params) {
-            mAsyncTaskDao.deleteRestaurant(params[0]);
-            return null;
-        }
-    }
-
     private static class deleteRestaurantWithNameAsyncTask extends AsyncTask<String, Void, Void>{
         private RestaurantDao mAsyncTaskDao;
         public deleteRestaurantWithNameAsyncTask(RestaurantDao restaurantDao) {

@@ -115,7 +115,6 @@ public class UpdateRestaurantActivity extends Activity {
                         //startActivityForResult(i_start, 2);
                         i_start.putExtra(EXTRA_REPLY_DELETE, "do-delete");
                         i_start.putExtra(EXTRA_REPLY_NAME, name.getText().toString());
-
                         setResult(RESULT_OK, i_start);
                         finish();
                     }
@@ -162,7 +161,7 @@ public class UpdateRestaurantActivity extends Activity {
                     i_start.putExtra(EXTRA_REPLY_PHONE, phone.getText().toString());
                     i_start.putExtra(EXTRA_REPLY_DESCRIPTION, description.getText().toString());
                     i_start.putExtra(EXTRA_REPLY_TAGS, tags.getText().toString());
-                    i_start.putExtra(EXTRA_REPLY_RATING, tags.getText().toString());
+                    i_start.putExtra(EXTRA_REPLY_RATING, txtRatingValue.getText().toString());
 
                     setResult(RESULT_OK, i_start);
                     finish();
