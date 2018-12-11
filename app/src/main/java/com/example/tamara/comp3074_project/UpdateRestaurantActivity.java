@@ -188,16 +188,17 @@ public class UpdateRestaurantActivity extends Activity {
         bLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String destination = address.getText().toString();
-                if (destination.equals("")) {
-                    destination = "160+Kendal+Ave+Toronto+Ontario+Canada";
+                String location = address.getText().toString();
+                if (location.equals("")) {
+                    location = "160+Kendal+Ave+Toronto+Ontario+Canada";
                     Toast.makeText(getApplicationContext(), "No Address Was Supplied.", Toast.LENGTH_LONG).show();
                 }
 
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + destination));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + location));
                 startActivity(i);
             }
         });
+        bLocation.setVisibility(View.GONE);
 
         bDirection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -225,6 +226,7 @@ public class UpdateRestaurantActivity extends Activity {
 
             }
         });
+        bDirection.setVisibility(View.GONE);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override

@@ -1,7 +1,10 @@
 package com.example.tamara.comp3074_project;
 
+import android.Manifest;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 
@@ -13,9 +16,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class RestaurantViewActivity extends Activity {
 
     String rName, rAddress, rPhone, rDescription, rTags = "";
+
+    private static final int LOCATION_CODE = 1;
+    private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,59 @@ public class RestaurantViewActivity extends Activity {
 
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_CODE);
+        }
+
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        Button btnLocation = findViewById(R.id.btnRVALocation);
+
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // String destination = address.getText().toString();
+                String destination = rAddress;
+                if (destination.equals("")) {
+                    destination = "160+Kendal+Ave+Toronto+Ontario+Canada";
+                    Toast.makeText(getApplicationContext(), "No Address Was Supplied.", Toast.LENGTH_LONG).show();
+                }
+
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + destination));
+                startActivity(i);
+            }
+        });
+
+        Button btnDirection = findViewById(R.id.btnRVADirections);
+
+        btnDirection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // String destination = address.getText().toString();
+                String destination = rAddress;
+                if (destination.equals("")) {
+                    destination = "160+Kendal+Ave+Toronto+Ontario+Canada";
+                    Toast.makeText(getApplicationContext(), "No Address Was Supplied.", Toast.LENGTH_LONG).show();
+                }
+
+                String lastKnownLocation;
+
+                List<String> providers = locationManager.getProviders(true);
+
+                if (providers.get(0).equals("") || providers.get(0).equals(null) || providers.get(0).equals("passive")) {
+                    lastKnownLocation = "160+Kendal+Ave+Toronto+Ontario+Canada";
+                } else {
+                    lastKnownLocation = providers.get(0);
+                }
+
+                Uri navQuery = Uri.parse("https://www.google.com/maps/dir/?api=1&origin=" + lastKnownLocation + "&destination=" + destination);
+
+                Intent i = new Intent(Intent.ACTION_VIEW, navQuery);
+                startActivity(i);
+            }
+        });
+
         Button btnShareEmail = findViewById(R.id.btnShareEmail);
 
         btnShareEmail.setOnClickListener(new View.OnClickListener() {
@@ -79,13 +140,25 @@ public class RestaurantViewActivity extends Activity {
         btnShareTwitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String tweetMsg = "I just ate at a great place! Check out " + rName + " at " + rAddress + ".";
-
+                
                 Intent tweet = new Intent(Intent.ACTION_VIEW);
                 tweet.setData(Uri.parse("http://twitter.com/?status=" + Uri.encode(tweetMsg)));
                 startActivity(tweet);
 
+                /*
+                String tweetUrl = "https://twitter.com/intent/tweet?text=" + tweetMsg;
+                Uri uri = Uri.parse(tweetUrl);
+                Intent tweet = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(tweet);
+                   */
+
+                /*
+                String tweetUrl = "https://twitter.com/intent/tweet?text=" + tweetMsg + "&url="
+                        + "https://www.google.com";
+                Uri uri = Uri.parse(tweetUrl);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                */
             }
         });
 
