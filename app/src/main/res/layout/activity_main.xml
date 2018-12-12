@@ -23,7 +23,7 @@
     <include
         layout="@layout/content_main"
         android:layout_width="353dp"
-        android:layout_height="285dp"
+        android:layout_height="443dp"
         android:layout_marginEnd="14dp"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="14dp"

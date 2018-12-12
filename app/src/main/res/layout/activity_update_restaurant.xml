@@ -136,12 +136,18 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:layout_marginTop="24dp"
         android:numStars="5"
         android:rating="2.0"
         android:stepSize="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/btnLocationRestaurant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRatingValue"
         app:layout_constraintTop_toBottomOf="@+id/editTextTags"
-        tools:layout_editor_absoluteX="72dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnSaveRestaurant"
@@ -173,15 +179,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
-        tools:layout_editor_absoluteX="266dp"
-        tools:layout_editor_absoluteY="466dp" />
+        tools:layout_editor_absoluteX="276dp"
+        tools:layout_editor_absoluteY="530dp" />
 
     <Button
         android:id="@+id/btnDirectionRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Directions"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="409dp" />
+        tools:layout_editor_absoluteX="190dp"
+        tools:layout_editor_absoluteY="530dp" />
 
 </android.support.constraint.ConstraintLayout>
