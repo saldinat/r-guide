@@ -23,13 +23,22 @@
         </activity>
         <activity
             android:name=".AddRestaurantActivity"
-            android:label="@string/title_activity_add_restaurant" />
+            android:label="@string/title_activity_add_restaurant">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" /></activity>
         <activity
             android:name=".RestaurantViewActivity"
-            android:label="@string/title_activity_restaurant_view" />
+            android:label="@string/title_activity_restaurant_view">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /></activity>
         <activity
             android:name=".UpdateRestaurantActivity"
-            android:label="@string/title_activity_update_restaurant" />
+            android:label="@string/title_activity_update_restaurant">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -44,7 +53,10 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /></activity>
 
         <uses-library
             android:name="org.apache.http.legacy"

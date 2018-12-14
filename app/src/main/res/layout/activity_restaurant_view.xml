@@ -7,6 +7,22 @@
     tools:context=".RestaurantViewActivity">
 
     <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="232dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="53dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="15dp"
+        android:text="Name:"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarView"
+        app:layout_constraintEnd_toStartOf="@+id/textViewName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +37,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="187dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="26dp"
+        android:text="Address:"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarView"
+        app:layout_constraintEnd_toStartOf="@+id/textViewAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textViewName"
@@ -42,7 +74,7 @@
     <TextView
         android:id="@+id/textViewAddress"
         android:layout_width="wrap_content"
-        android:layout_height="17dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:layout_marginEnd="163dp"
         android:layout_marginLeft="163dp"
@@ -55,6 +87,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="12dp"
+        android:text="Phone:"
+        app:layout_constraintEnd_toStartOf="@+id/textViewPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textViewPhone"
@@ -76,7 +122,8 @@
     <TextView
         android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginEnd="163dp"
         android:layout_marginLeft="163dp"
         android:layout_marginRight="163dp"
@@ -84,25 +131,54 @@
         android:layout_marginTop="15dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTags"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
 
     <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginBottom="29dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="27dp"
+        android:text="Description:"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
         android:id="@+id/textViewTags"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
         android:layout_marginEnd="163dp"
-        android:layout_marginLeft="163dp"
         android:layout_marginRight="163dp"
-        android:layout_marginStart="163dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRatingValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="57dp"
+        android:layout_marginStart="72dp"
+        android:text="Tags:"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarView"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTags"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewRatingValue"
@@ -124,10 +200,10 @@
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginRight="96dp"
-        android:layout_marginStart="96dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="72dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:numStars="5"
@@ -135,7 +211,6 @@
         android:stepSize="1.0"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRatingValue" />
 
